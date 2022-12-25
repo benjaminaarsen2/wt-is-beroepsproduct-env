@@ -1,19 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Gelre Airport</title>
 </head>
+
 <body>
-    <h1>It Works!</h1>
-    <?php echo('Hallo WT\'er, de webserver is online en PHP werkt.'); ?>
-    <br>
-    <br>
-    Alle technische informatie over je webserver vind je hier: <a href="phpinfo.php">http://<?=$_SERVER['HTTP_HOST']?>/phpinfo.php</a>
-    <br>
-    <br>
-    Een voorbeeld van een pagina die gegevens uit de database haalt vind je hier: <a href="componist-aantalstukken.php">http://<?=$_SERVER['HTTP_HOST']?>/componist-aantalstukken.php</a>
+    <?php
+        include "./navbar.php";
+        echo createNavbar();
+    ?>
+    <div class="hero">
+        <main>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Gelre airport</h1>
+                    <h3>Bent u een passagier of medewerker?</h3>
+                </div>
+                <div class="knoppen">
+                    <a href="./passagierpaneel.html" class="knop">Passagier</a>
+                    <a href="./inloggen.html" class="knop">Medewerker</a>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <a href="./privacy.php">Privacyverklaring</a>
+    </footer>
 </body>
+
 </html>

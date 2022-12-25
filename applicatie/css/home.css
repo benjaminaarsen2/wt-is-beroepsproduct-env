@@ -1,0 +1,7 @@
+.knoppen {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    grid-gap: 2em;
+    margin-top: 1em;
+}

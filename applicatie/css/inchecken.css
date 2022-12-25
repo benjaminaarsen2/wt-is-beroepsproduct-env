@@ -1,0 +1,11 @@
+.inchecken {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2em;;
+}
+
+.knop {
+    grid-area: 3 / 1 / 4 / 3;
+    font-size: 15px;
+    margin-top: 1em;
+}
