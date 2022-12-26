@@ -1,9 +1,11 @@
 <?php
+    session_start();
+
     $passagiernummer = '';
 
     //als er een session is kunnen we hiervan het passagiernummer gebruiken
-    if (isset($_SESSION["passagiernummer"])) {
-        $passagiernummer = $_SESSION["passagiernum"];
+    if (session_status() !== PHP_SESSION_NONE && isset($_SESSION["passagiernummer"])) {
+        $passagiernummer = $_SESSION["passagiernummer"];
     }
     //als deze er niet is zorgen we dat we geredirect worden als er ook geen passagiernummer is
     else if (!isset($_POST["passagiernummer"])) {
@@ -30,7 +32,6 @@
     }
 
     //session starten met passagiernummer
-    session_start();
     $_SESSION["passagiernummer"] = $passagiernummer;
 
     // Als we dit punt kunnen bereiken betekent het dat er een geldig passagiersnummer ingevuld is.
@@ -61,7 +62,7 @@
         echo file_get_contents("./components/navbar.html");
     ?>
     <header>
-        <?= "<h1>" . "Ingelogd als: " . $passagier_naam . "</h1>"?>
+        <?= "<h1>Ingelogd als: $passagier_naam</h1>"?>
         <!-- <h1>Passagier paneel</h1> -->
     </header>
     <div class="hero">
