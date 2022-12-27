@@ -17,12 +17,12 @@
 
 <body>
     <?php
-        echo file_get_contents("./components/navbar.html");
+        include "./components/navbar.php";
     ?>
     <div class="hero">
         <div class="hero-content">
             <h3>Vul hier alstublieft het vluchtnummer in</h3>
-            <form method="post" action="/vlucht_detail_passagier.html">
+            <form method="post" action="/vlucht_detail.php">
                 <label for="vluchtnummer">Vluchtnummer:</label>
                 <br>
                 <input type="number" id="vluchtnummer" name="vluchtnummer">

@@ -17,12 +17,13 @@
 
 <body>
     <?php
-        echo file_get_contents("./components/navbar.html");
+        include "./components/navbar.php";
     ?>
     <div class="hero">
         <div class="hero-content">
             <h3>Vul hier alstublieft uw passagiernummer in</h3>
-            <form method="post" action="/passagierpaneel.php">
+            <!-- FIXME: but why?? -->
+            <form method="post" action="./passagierpaneel.php">
                 <label for="passagiernummer">Passagiernummer:</label>
                 <br>
                 <input type="number" id="passagiernummer" name="passagiernummer" required>

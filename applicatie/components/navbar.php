@@ -1,3 +1,10 @@
+<?php
+    $ingelogd = false;
+    if(session_status() !== PHP_SESSION_NONE && isset($_SESSION["passagiernummer"])) {
+        $ingelogd = true;
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -36,6 +43,11 @@
             <a class="nav-button" href="./index.php">Home</a>
             <a class="nav-button" href="./vluchtnummer_invoeren.php">Inchecken</a>
             <a class="nav-button" href="./vluchtenoverzicht.php">Vluchtenoverzicht</a>
+            <?php
+                if($ingelogd) {
+                    echo "<a class='nav-button' href='./logout.php'>Uitloggen</a>";
+                }
+            ?>
         </div>
     </nav>
 </body>

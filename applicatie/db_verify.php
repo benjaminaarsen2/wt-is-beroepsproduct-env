@@ -14,4 +14,18 @@
             return false;
         }
     }
+
+    function check_vlucht($vluchtnummer) {
+        global $db;
+        $query = $db->prepare("SELECT vluchtnummer FROM Vlucht where vluchtnummer = (?)");
+        $query->execute([$vluchtnummer]);
+        $res = $query->fetchAll();
+
+        if (count($res) === 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 ?>  

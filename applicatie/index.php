@@ -18,7 +18,7 @@
 <body>
     <!-- navbar -->
     <?php
-        echo file_get_contents("./components/navbar.html");
+        include "./components/navbar.php";
     ?>
     <div class="hero">
         <main>

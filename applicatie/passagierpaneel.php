@@ -1,10 +1,8 @@
 <?php
-    session_start();
-
     $passagiernummer = '';
-
+    session_start();
     //als er een session is kunnen we hiervan het passagiernummer gebruiken
-    if (session_status() !== PHP_SESSION_NONE && isset($_SESSION["passagiernummer"])) {
+    if (isset($_SESSION["passagiernummer"])) {
         $passagiernummer = $_SESSION["passagiernummer"];
     }
     //als deze er niet is zorgen we dat we geredirect worden als er ook geen passagiernummer is
@@ -17,9 +15,11 @@
         $passagiernummer = $_POST["passagiernummer"];
     }
 
+    
     //checken of het passagiernummer niet langer is dan 5 karakters
     if (strlen($passagiernummer) !== 5) {
-        header("Location: ./ongeldig_passagiernummer.php");
+        $_SESSION["error_reason"] = "Het passagiernummer is niet 5 tekens lang.";
+        header("Location: ./ongeldig.php");
         exit();
     }
     //passagiernummer omzetten naar integer.
@@ -27,7 +27,8 @@
     require_once "./db_verify.php";
     //checken of passagiernummer geldig is
     if (check_passagiernummer($passagiernummer) === false) {
-        header("Location: ./ongeldig_passagiernummer.php");
+        $_SESSION["error_reason"] = "Het ingevoerde passagiernummer bestaat niet.";
+        header("Location: ./ongeldig.php");
         exit();
     }
 
@@ -59,7 +60,7 @@
 <body>
     <!-- navbar -->
     <?php
-        echo file_get_contents("./components/navbar.html");
+        include "./components/navbar.php";
     ?>
     <header>
         <?= "<h1>Ingelogd als: $passagier_naam</h1>"?>
@@ -69,7 +70,7 @@
         <div class="hero-content">
             <a href="./vluchtgegevens_ophalen.php" class="knop">Vluchtgegevens ophalen</a>
             <a href="./inchecken.html" class="knop">Inchecken</a>
-            <a href="./vluchten_passagier.html" class="knop">Mijn vluchtgegevens</a>
+            <a href="./mijnvluchtgegevens.php" class="knop">Mijn vluchtgegevens</a>
         </div>
     </div>
     <?php

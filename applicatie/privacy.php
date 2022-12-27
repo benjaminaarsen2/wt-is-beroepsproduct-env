@@ -17,7 +17,7 @@
 
 <body>
     <?php
-        echo file_get_contents("./components/navbar.html");
+        include "./components/navbar.php";
     ?>
     <main>
         <h1>Privacyverklaring</h1>
