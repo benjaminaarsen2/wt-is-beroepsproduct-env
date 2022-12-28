@@ -13,7 +13,7 @@
         global $db;
         $query = $db->prepare(
             "select 'Gelre airport' as vertrekpunt, l.naam as bestemming, max_gewicht_pp as max_gewicht, max_aantal as aantal_plaatsen, (max_aantal - vp.vrije_plaatsen) as vrije_plaatsen,
-            m.naam as vliegmaatschappij, v.vluchtnummer from Vlucht v
+            m.naam as vliegmaatschappij, v.vluchtnummer, m.maatschappijcode from Vlucht v
             inner join Luchthaven l on v.bestemming = l.luchthavencode
             inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
             inner join (select p.vluchtnummer as vluchtnummer, count(*) as vrije_plaatsen from Passagier p right join Vlucht v on p.vluchtnummer = v.vluchtnummer group by p.vluchtnummer) as vp
@@ -32,7 +32,7 @@
             return false;
         }
         $query = $db->prepare(
-            "select top 50 l.naam as bestemming, v.vertrektijd, m.naam as vliegmaatschappij, vluchtnummer from Vlucht v
+            "select top 50 l.naam as bestemming, v.vertrektijd, m.naam as vliegmaatschappij, vluchtnummer, m.maatschappijcode from Vlucht v
             inner join Luchthaven l on v.bestemming = l.luchthavencode
             inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
             order by $sorteer"

@@ -74,6 +74,7 @@
         display: grid;
         padding: 1.5em; 
         grid-template-columns: auto auto;
+        gap: .5em;
         background: whitesmoke;
         width: min-content;
         border-radius: 1em;

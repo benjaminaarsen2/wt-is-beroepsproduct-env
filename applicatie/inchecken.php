@@ -9,7 +9,7 @@
 
     session_start();
     require_once "./check_for_passagiernummer.php";
-    require_once "./db_passagier.php";
+    require_once "./db/db_passagier.php";
 
 
     $passagiernummer = checkAndSetPassagiernummer($_SERVER["REQUEST_URI"]); //na inloggen omleiden naar deze pagina.

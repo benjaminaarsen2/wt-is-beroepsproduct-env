@@ -19,14 +19,14 @@
         header("Location: ./ongeldig.php");
         exit();
     }
-    require_once "./db_verify.php";
+    require_once "./db/db_verify.php";
     if (!check_vlucht($vluchtnummer)) {
         $_SESSION["error_reason"] = "Het vluchtnummer bestaat niet";
         header("Location: ./ongeldig.php");
         exit();
     }
 
-    require_once "./db_vlucht.php";
+    require_once "./db/db_vlucht.php";
     $vlucht_details = haalVluchtDetailOp($vluchtnummer);
 
     unset($_SESSION["vluchtnummer"]);

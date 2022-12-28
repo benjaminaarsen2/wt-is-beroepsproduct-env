@@ -6,3 +6,4 @@
 -   gebruiker een limiet in kunnen laten stellen voor hoeveel vluchten er weergeven worden.
 -   bagage zichtbaar bij vlucht-details voor passagier
 -   PHP bestanden beter uit elkaar halen (paginas, database interactie, componenten, sub-paginas)
+-   /img folder beter structureren (hero.jpg en viegmaatschappijen uit elkaar houden)

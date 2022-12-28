@@ -1,5 +1,5 @@
 <?php
-    require_once "./db_connectie.php";
+    require_once "db_connectie.php";
     $db = maakVerbinding();
 
     function check_passagiernummer($passagiernummer) {

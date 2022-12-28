@@ -1,5 +1,5 @@
 <?php
-    require_once "./db_vlucht.php";
+    require_once "./db/db_vlucht.php";
     $vluchten = isset($_POST["sorteer"]) ? haalAlleVluchtenBasisOp($_POST["sorteer"]) : haalAlleVluchtenBasisOp();
     // De functie returnt false als de sorteermethode anders is dan in code mogelijk, 
     // wat betekent dat er SQL-injectie plaats heeft gevonden
@@ -60,8 +60,10 @@
                     echo "<h3>".$vlucht["vertrektijd"]."</h3>";
                     echo "<h3 class='label'>Vliegmaatschappij:</h3>";
                     echo "<h3>".$vlucht["vliegmaatschappij"]."</h3>";
+                    $imagepath = "./img/". $vlucht["maatschappijcode"]. ".jpg";
+                    $imagefile = file_exists($imagepath) ? $imagepath : "./img/default.jpg";
+                    echo "<img alt='". $vlucht['vliegmaatschappij'] . "' src='" . $imagefile . "'>";
                     echo "</a>";
-                    // TODO: img?
                 }
             ?>
         </div>

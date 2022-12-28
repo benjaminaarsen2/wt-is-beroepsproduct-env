@@ -1,5 +1,5 @@
 <?php
-    require_once "./db_verify.php";
+    require_once "./db/db_verify.php";
 
     function checkAndSetPassagiernummer($nextPage = "./passagierpaneel.php") {
 
