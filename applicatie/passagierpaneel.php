@@ -1,39 +1,7 @@
 <?php
-    $passagiernummer = '';
     session_start();
-    //als er een session is kunnen we hiervan het passagiernummer gebruiken
-    if (isset($_SESSION["passagiernummer"])) {
-        $passagiernummer = $_SESSION["passagiernummer"];
-    }
-    //als deze er niet is zorgen we dat we geredirect worden als er ook geen passagiernummer is
-    else if (!isset($_POST["passagiernummer"])) {
-        header("Location: ./passagiernummer_invullen.php");
-        exit();
-    }
-    //er is wel een post passagiernummer beschikbaar dus gebruiken we deze.
-    else {
-        $passagiernummer = $_POST["passagiernummer"];
-    }
-
-    
-    //checken of het passagiernummer niet langer is dan 5 karakters
-    if (strlen($passagiernummer) !== 5) {
-        $_SESSION["error_reason"] = "Het passagiernummer is niet 5 tekens lang.";
-        header("Location: ./ongeldig.php");
-        exit();
-    }
-    //passagiernummer omzetten naar integer.
-    $passagiernummer = intval($passagiernummer);
-    require_once "./db_verify.php";
-    //checken of passagiernummer geldig is
-    if (check_passagiernummer($passagiernummer) === false) {
-        $_SESSION["error_reason"] = "Het ingevoerde passagiernummer bestaat niet.";
-        header("Location: ./ongeldig.php");
-        exit();
-    }
-
-    //session starten met passagiernummer
-    $_SESSION["passagiernummer"] = $passagiernummer;
+    require_once "./check_for_passagiernummer.php";
+    $passagiernummer = checkAndSetPassagiernummer(); //geen nextPage want default is passagierpaneel.
 
     // Als we dit punt kunnen bereiken betekent het dat er een geldig passagiersnummer ingevuld is.
     require_once "./db_passagier.php";
@@ -60,11 +28,10 @@
 <body>
     <!-- navbar -->
     <?php
-        include "./components/navbar.php";
+        require_once "./components/navbar.php";
     ?>
     <header>
         <?= "<h1>Ingelogd als: $passagier_naam</h1>"?>
-        <!-- <h1>Passagier paneel</h1> -->
     </header>
     <div class="hero">
         <div class="hero-content">

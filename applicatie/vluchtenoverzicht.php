@@ -29,7 +29,7 @@
 
 <body>
     <?php
-        include "./components/navbar.php";
+        require_once "./components/navbar.php";
     ?>
     <header>
         <h1>Vluchtenoverzicht</h1>

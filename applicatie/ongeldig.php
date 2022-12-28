@@ -26,7 +26,7 @@
 
 <body>
     <?php
-        include "./components/navbar.php";
+        require_once "./components/navbar.php";
     ?>
 
     <div class="hero">

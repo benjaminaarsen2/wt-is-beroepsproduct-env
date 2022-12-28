@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION["nextPage"])) {
+        $nextPage = $_SESSION["nextPage"];
+    }
+    //ervoor zorgen dat gebruiker volgende keer niet weer geredirect kan worden, tenzij hier weer specifiek om gevraagd word.
+    unset($_SESSION["nextPage"]);
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -17,13 +27,13 @@
 
 <body>
     <?php
-        include "./components/navbar.php";
+        require_once "./components/navbar.php";
     ?>
     <div class="hero">
         <div class="hero-content">
             <h3>Vul hier alstublieft uw passagiernummer in</h3>
             <!-- FIXME: but why?? -->
-            <form method="post" action="./passagierpaneel.php">
+            <form method="post" action= <?= $nextPage ?> >
                 <label for="passagiernummer">Passagiernummer:</label>
                 <br>
                 <input type="number" id="passagiernummer" name="passagiernummer" required>
