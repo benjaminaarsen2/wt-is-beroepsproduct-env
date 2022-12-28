@@ -9,6 +9,7 @@
         $reason = $_SESSION["success_reason"];
     }
     unset($_SESSION["success_reason"]);
+    unset($_SESSION["nextPage"]);
 ?>
 <!DOCTYPE html>
 <html lang="nl">

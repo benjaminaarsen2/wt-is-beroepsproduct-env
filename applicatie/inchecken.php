@@ -61,6 +61,8 @@
                                                 ($kofferstoegestaan + $aantal_koffers === 1 ? '' : 's').
                                                 " inchecken.";
                 }
+                // we moeten terug naar de vorige state aangezien er nu een foute waarde ingevoerd is.
+                $_SESSION["inchecken_state"] = "aantal_koffers_invoeren";
                 header("Location: ./ongeldig.php");
                 exit();
             }
@@ -88,6 +90,8 @@
             if ($gewichttoegestaan < 0) {
                 $_SESSION["error_reason"] = "Uw baggage overschrijdt het maximale gewicht per persoon voor deze vlucht. 
                                             U zit " . abs($gewichttoegestaan) . " boven het maximum.";
+                // we moeten terug naar de vorige state aangezien er nu een foute waarde ingevoerd is.
+                $_SESSION["inchecken_state"] = "aantal_gewicht_invoeren";
                 header("Location: ./ongeldig.php");
                 exit();
             }
