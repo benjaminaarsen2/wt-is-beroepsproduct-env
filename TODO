@@ -4,5 +4,5 @@
 -   order by dropdown voor vluchtenoverzicht
 -   meerdere toepasbare filters voor vluchtenoverzicht
 -   gebruiker een limiet in kunnen laten stellen voor hoeveel vluchten er weergeven worden.
--   nextPage in session bij passagiernummer_invullen zodat je geriderect kan worden naar de juiste pagina.
 -   bagage zichtbaar bij vlucht-details voor passagier
+-   PHP bestanden beter uit elkaar halen (paginas, database interactie, componenten, sub-paginas)
