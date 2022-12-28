@@ -41,7 +41,7 @@
         </div>
         <div class="nav">
             <a class="nav-button" href="./index.php">Home</a>
-            <a class="nav-button" href="./vluchtnummer_invoeren.php">Inchecken</a>
+            <a class="nav-button" href="./inchecken.php">Inchecken</a>
             <a class="nav-button" href="./vluchtenoverzicht.php">Vluchtenoverzicht</a>
             <?php
                 if($ingelogd) {

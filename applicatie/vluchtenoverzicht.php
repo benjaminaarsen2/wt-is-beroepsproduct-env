@@ -1,7 +1,7 @@
 <?php
     require_once "./db_vlucht.php";
     $vluchten = isset($_POST["sorteer"]) ? haalAlleVluchtenBasisOp($_POST["sorteer"]) : haalAlleVluchtenBasisOp();
-    // De functie returnt false als de sorteermethode is anders is dan in code, 
+    // De functie returnt false als de sorteermethode anders is dan in code mogelijk, 
     // wat betekent dat er SQL-injectie plaats heeft gevonden
     if ($vluchten === false) {
         echo "<h2>Not this time, bitch</h2>";
