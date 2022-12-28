@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $reason = 'U heeft iets ongeldigs ingevoerd in een invoerveld';
+    $reason = '';
     $nextPage = "./index.php";
     if (isset($_SESSION["nextPage"])) {
         $nextPage = $_SESSION["nextPage"];

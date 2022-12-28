@@ -18,8 +18,28 @@
     //     $_SESSION["inchecken_state"] = 'aantal_koffers_invoeren';
     // }
 
-    IF (!isset($_SESSION["inchecken_state"])) { 
+    //voor de eerste keer dat er naar de incheckpagina gegaan wordt.
+    if (!isset($_SESSION["inchecken_state"])) { 
         $_SESSION["inchecken_state"] = "aantal_koffers_invoeren";
+    }
+
+    /*
+    voor als de gebruiker meerdere keren op de "inchecken" knop klikt terwijl het inchecken nog helemaal niet afgerond is
+    we resetten dan de sessie variabelen en sturen de gebruiker terug naar het begin.
+    */
+    if (isset($_SESSION["inchecken_state"]) && !isset($_POST["aantal_koffers"]) && $_SESSION["inchecken_state"] === "aantal_koffers_checken") {  
+        // $_SESSION["inchecken_state"] = "aantal_koffers_invoeren";
+        unset($_SESSION["inchecken_state"]);
+        unset($_SESSION["aantal_koffers"]);
+        header("Location: ". $_SERVER["REQUEST_URI"]);
+        exit();
+    }
+    if (isset($_SESSION["inchecken_state"]) && !isset($_POST["gewicht-0"]) && $_SESSION["inchecken_state"] === "aantal_gewicht_checken") {
+        // $_SESSION["inchecken_state"] = "aantal_gewicht_invoeren";
+        unset($_SESSION["inchecken_state"]);
+        unset($_SESSION["aantal_koffers"]);
+        header("Location: ". $_SERVER["REQUEST_URI"]);
+        exit();
     }
 
     switch ($_SESSION["inchecken_state"]) {
@@ -99,7 +119,10 @@
             $_SESSION["nextPage"] = "./paneel_handler.php";
             //TODO: gebruiker nog een overzicht van gegevens geven zodat hij kan checken of alles juist is
             $_SESSION["success_reason"] = "Uw bagage is successvol ingecheckt.";
+
+            //session variabelen opschonen
             unset($_SESSION["inchecken_state"]);
+            unset($_SESSION["aantal_koffers"]);
             header("Location: ./success.php");
             break;
     }

@@ -30,7 +30,6 @@
                         echo "<label for='gewicht-". $i . "'>Gewicht koffer ". $i+1 . "</label>";
                         echo "<input type='number' name='gewicht-". $i . "' id='gewicht-" . $i ."'>";
                     }
-                    unset($_SESSION["aantal_koffers"]);
                 ?>
                 <input class="knop" type="submit" value="Inchecken">
             </form>

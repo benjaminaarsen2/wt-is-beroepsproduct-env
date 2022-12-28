@@ -34,6 +34,9 @@
     if (isset($_GET["vluchtnummer"])) {
         $terugPagina = $_SERVER["HTTP_REFERER"];
     }
+
+    $imagepath = "./img/". $vlucht_details["maatschappijcode"]. ".jpg";
+    $imagefile = file_exists($imagepath) ? $imagepath : "./img/default.jpg";
 ?>  
 
 <!DOCTYPE html>
@@ -69,7 +72,7 @@
                 <?= "<h3>". $vlucht_details["vliegmaatschappij"]. "</h3>" ?>
                 <h3 class="label">Vluchtnummer:</h3>
                 <?= "<h3>". $vlucht_details["vluchtnummer"]. "</h3>" ?>
-                <img alt="KLM Vliegtuig" src="img/klm.jpg">
+                <img alt="KLM Vliegtuig" src= <?= $imagefile ?> >
                 <a class="knop" href= <?=$terugPagina?> >Terug</a>
             </div>
         </div>
