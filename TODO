@@ -1,7 +1,9 @@
 -   website responsive maken
 -   order by dropdown voor vluchtenoverzicht
--   meerdere toepasbare filters voor vluchtenoverzicht
 -   gebruiker een limiet in kunnen laten stellen voor hoeveel vluchten er weergeven worden.
 -   bagage zichtbaar bij vlucht-details voor passagier
 -   /img folder beter structureren (hero.jpg en viegmaatschappijen uit elkaar houden)
 -   ingecheckte bagage in sql server inserten
+    -   hiervoor eerst nieuwe "test" passagier maken en hiervoor moeten we eerst medewerker interacties
+        werkend krijgen
+
