@@ -25,11 +25,22 @@ if (php_sapi_name() == 'cli-server') {
         readfile(".". $path);
         exit();
     }
+
+    // geen toegang direct tot de andere directories
+    if (strpos($path, "db") || strpos($path, "pages") || strpos($path, "util")) {
+        http_response_code(403);
+        exit('<h1>Toegang geweigerd</h1>');
+    }
+
     //TODO: redirect naar pagina zonder .php extensie
     if (substr($path, -4, 4) === ".php") {
         if (in_array(basename($path, ".php"), array_keys($pages))) {
             // header("Location: " . basename($path, ".php"));
             include $pages[basename($path, ".php")];    
+            exit();
+        }
+        else if ($path === "/phpinfo.php") {
+            include "./phpinfo.php";
             exit();
         }
         //de pagina bestaat niet

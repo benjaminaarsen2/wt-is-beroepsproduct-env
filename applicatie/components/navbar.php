@@ -41,10 +41,11 @@
         </div>
         <div class="nav">
             <a class="nav-button" href="./">Home</a>
-            <a class="nav-button" href="./inchecken">Inchecken</a>
+            <!-- <a class="nav-button" href="./inchecken">Inchecken</a> -->
             <a class="nav-button" href="./vluchtenoverzicht">Vluchtenoverzicht</a>
             <?php
                 if($ingelogd) {
+                    echo "<a class='nav-button' href='./paneel_handler'>Naar paneel</a>";
                     echo "<a class='nav-button' href='./logout'>Uitloggen</a>";
                 }
             ?>

@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once "./db/db_verify.php";
-    require_once "./check_for_passagiernummer.php";
+    require_once "./util/check_for_passagiernummer.php";
     $passagiernummer = checkAndSetPassagiernummer($_SERVER["REQUEST_URI"]);
    
 

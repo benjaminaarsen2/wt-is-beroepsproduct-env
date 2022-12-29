@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "./check_for_passagiernummer.php";
+    require_once "./util/check_for_passagiernummer.php";
     $passagiernummer = checkAndSetPassagiernummer(); //geen nextPage want default is passagierpaneel.
 
     // Als we dit punt kunnen bereiken betekent het dat er een geldig passagiersnummer ingevuld is.

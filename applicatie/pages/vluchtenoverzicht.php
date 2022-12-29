@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "./db/db_vlucht.php";
     $vluchten = isset($_POST["sorteer"]) ? haalAlleVluchtenBasisOp($_POST["sorteer"]) : haalAlleVluchtenBasisOp();
     // De functie returnt false als de sorteermethode anders is dan in code mogelijk, 
