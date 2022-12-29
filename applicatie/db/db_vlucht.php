@@ -25,19 +25,62 @@
         return $res;
     }
 
-    function haalAlleVluchtenBasisOp($sorteer = "vluchtnummer") {
+    function haalAlleVluchtenBasisOp($maatschappijfilter, $bestemmingfilter, $sorteer) {
         global $db;
-        // we kunnen geen prepared statement gebruiken voor order by, maar op deze manier kunnen we wel SQL-injectie voorkomen
+        //voor het geval dat er geknutseld wordt met post requests
         if (!in_array($sorteer, ["vluchtnummer", "vertrektijd", "bestemming"])) {
             return false;
         }
+
+        //default
         $query = $db->prepare(
             "select top 50 l.naam as bestemming, v.vertrektijd, m.naam as vliegmaatschappij, vluchtnummer, m.maatschappijcode from Vlucht v
             inner join Luchthaven l on v.bestemming = l.luchthavencode
             inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
             order by $sorteer"
         );
-        $query->execute([$sorteer]);
+
+        if ($maatschappijfilter && $bestemmingfilter) {
+            $query = $db->prepare(
+                "select top 50 l.naam as bestemming, v.vertrektijd, m.naam as vliegmaatschappij, vluchtnummer, m.maatschappijcode from Vlucht v
+                inner join Luchthaven l on v.bestemming = l.luchthavencode
+                inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
+                where m.naam = (?) and l.naam = (?)
+                order by $sorteer
+                "
+            );
+            $query->execute([$maatschappijfilter, $bestemmingfilter]);
+            $res = $query->fetchAll();
+            return $res;
+        }
+        else if ($maatschappijfilter) {
+            $query = $db->prepare(
+                "select top 50 l.naam as bestemming, v.vertrektijd, m.naam as vliegmaatschappij, vluchtnummer, m.maatschappijcode from Vlucht v
+                inner join Luchthaven l on v.bestemming = l.luchthavencode
+                inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
+                where m.naam = (?)
+                order by $sorteer
+                "
+            );
+            $query->execute([$maatschappijfilter]);
+            $res = $query->fetchAll();
+            return $res;
+        }
+        else if ($bestemmingfilter) {
+            $query = $db->prepare(
+                "select top 50 l.naam as bestemming, v.vertrektijd, m.naam as vliegmaatschappij, vluchtnummer, m.maatschappijcode from Vlucht v
+                inner join Luchthaven l on v.bestemming = l.luchthavencode
+                inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
+                where l.naam = (?)
+                order by $sorteer
+                "
+            );
+            $query->execute([$bestemmingfilter]);
+            $res = $query->fetchAll();
+            return $res;
+        }
+        
+        $query->execute();
         $res = $query->fetchAll();
         return $res;
     }
