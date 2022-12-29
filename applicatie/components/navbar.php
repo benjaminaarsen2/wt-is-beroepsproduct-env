@@ -40,12 +40,12 @@
             </svg>
         </div>
         <div class="nav">
-            <a class="nav-button" href="./index.php">Home</a>
-            <a class="nav-button" href="./inchecken.php">Inchecken</a>
-            <a class="nav-button" href="./vluchtenoverzicht.php">Vluchtenoverzicht</a>
+            <a class="nav-button" href="./">Home</a>
+            <a class="nav-button" href="./inchecken">Inchecken</a>
+            <a class="nav-button" href="./vluchtenoverzicht">Vluchtenoverzicht</a>
             <?php
                 if($ingelogd) {
-                    echo "<a class='nav-button' href='./logout.php'>Uitloggen</a>";
+                    echo "<a class='nav-button' href='./logout'>Uitloggen</a>";
                 }
             ?>
         </div>

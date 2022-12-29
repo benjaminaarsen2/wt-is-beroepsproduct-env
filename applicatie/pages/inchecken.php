@@ -83,7 +83,7 @@
                 }
                 // we moeten terug naar de vorige state aangezien er nu een foute waarde ingevoerd is.
                 $_SESSION["inchecken_state"] = "aantal_koffers_invoeren";
-                header("Location: ./ongeldig.php");
+                header("Location: ./ongeldig");
                 exit();
             }
             $_SESSION["inchecken_state"] = "aantal_gewicht_invoeren";
@@ -112,18 +112,18 @@
                                             U zit " . abs($gewichttoegestaan) . " boven het maximum.";
                 // we moeten terug naar de vorige state aangezien er nu een foute waarde ingevoerd is.
                 $_SESSION["inchecken_state"] = "aantal_gewicht_invoeren";
-                header("Location: ./ongeldig.php");
+                header("Location: ./ongeldig");
                 exit();
             }
             //TODO: koffers uploaden naar database
-            $_SESSION["nextPage"] = "./paneel_handler.php";
+            $_SESSION["nextPage"] = "./paneel_handler";
             //TODO: gebruiker nog een overzicht van gegevens geven zodat hij kan checken of alles juist is
             $_SESSION["success_reason"] = "Uw bagage is successvol ingecheckt.";
 
             //session variabelen opschonen
             unset($_SESSION["inchecken_state"]);
             unset($_SESSION["aantal_koffers"]);
-            header("Location: ./success.php");
+            header("Location: ./success");
             break;
     }
 

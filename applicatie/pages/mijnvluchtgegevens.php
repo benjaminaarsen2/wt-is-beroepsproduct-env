@@ -9,5 +9,5 @@
     $vluchtnummer = haalMijnVluchtOp($passagiernummer);
 
     $_SESSION["vluchtnummer"] = $vluchtnummer;
-    header("Location: ./vlucht_detail.php");
+    header("Location: ./vlucht_detail");
 ?>

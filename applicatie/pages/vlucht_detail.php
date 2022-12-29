@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_POST["vluchtnummer"]) && !isset($_SESSION["vluchtnummer"]) && !isset($_GET["vluchtnummer"])) {
         $_SESSION["error_reason"] = "Er is geen vluchtnummer meegegeven";
-        header("Location: ./ongeldig.php");
+        header("Location: ./ongeldig");
         exit();
     }
     
@@ -16,13 +16,13 @@
 
     if (strlen($vluchtnummer) !== 5) {
         $_SESSION["error_reason"] = "Het vluchtnummer moet 5 tekens lang zijn";
-        header("Location: ./ongeldig.php");
+        header("Location: ./ongeldig");
         exit();
     }
     require_once "./db/db_verify.php";
     if (!check_vlucht($vluchtnummer)) {
         $_SESSION["error_reason"] = "Het vluchtnummer bestaat niet";
-        header("Location: ./ongeldig.php");
+        header("Location: ./ongeldig");
         exit();
     }
 
@@ -30,7 +30,7 @@
     $vlucht_details = haalVluchtDetailOp($vluchtnummer);
 
     unset($_SESSION["vluchtnummer"]);
-    $terugPagina = "./paneel_handler.php";
+    $terugPagina = "./paneel_handler";
     if (isset($_GET["vluchtnummer"])) {
         $terugPagina = $_SERVER["HTTP_REFERER"];
     }

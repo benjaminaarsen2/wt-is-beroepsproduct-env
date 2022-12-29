@@ -35,9 +35,9 @@
     </header>
     <div class="hero">
         <div class="hero-content">
-            <a href="./vluchtgegevens_ophalen.php" class="knop">Vluchtgegevens ophalen</a>
-            <a href="./inchecken.php" class="knop">Inchecken</a>
-            <a href="./mijnvluchtgegevens.php" class="knop">Mijn vluchtgegevens</a>
+            <a href="./vluchtgegevens_ophalen" class="knop">Vluchtgegevens ophalen</a>
+            <a href="./inchecken" class="knop">Inchecken</a>
+            <a href="./mijnvluchtgegevens" class="knop">Mijn vluchtgegevens</a>
         </div>
     </div>
     <?php

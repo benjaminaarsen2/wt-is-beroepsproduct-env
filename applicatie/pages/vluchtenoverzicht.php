@@ -53,7 +53,7 @@
         <div class="vluchten">
             <?php
                 foreach($vluchten as $vlucht) {
-                    echo "<a class='vlucht' href='./vlucht_detail.php?vluchtnummer=".$vlucht['vluchtnummer']."'>";
+                    echo "<a class='vlucht' href='./vlucht_detail?vluchtnummer=".$vlucht['vluchtnummer']."'>";
                     echo "<h3 class='label'>Bestemming:</h3>";
                     echo "<h3>".$vlucht["bestemming"]."</h3>";
                     echo "<h3 class='label'>Vertrektijd:</h3>";

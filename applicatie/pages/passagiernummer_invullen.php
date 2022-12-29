@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    $nextPage = "./passagierpaneel";
+    if (isset($_SESSION["nextPage"])) {
+        $nextPage = $_SESSION["nextPage"];
+    }
+    //ervoor zorgen dat gebruiker volgende keer niet weer geredirect kan worden, tenzij hier weer specifiek om gevraagd word.
+    unset($_SESSION["nextPage"]);
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -12,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-    <title>Vluchtgegevens ophalen</title>
+    <title>Passagiernummer invullen</title>
 </head>
 
 <body>
@@ -21,13 +31,14 @@
     ?>
     <div class="hero">
         <div class="hero-content">
-            <h3>Vul hier alstublieft het vluchtnummer in</h3>
-            <form method="post" action="/vlucht_detail.php">
-                <label for="vluchtnummer">Vluchtnummer:</label>
+            <h3>Vul hier alstublieft uw passagiernummer in</h3>
+            <!-- FIXME: but why?? -->
+            <form method="post" action= <?= $nextPage ?> >
+                <label for="passagiernummer">Passagiernummer:</label>
                 <br>
-                <input type="number" id="vluchtnummer" name="vluchtnummer">
+                <input type="number" id="passagiernummer" name="passagiernummer" required>
                 <br>
-                <input class="knop" type="submit" value="Vluchtgegevens ophalen">
+                <input class="knop" type="submit" value="Inloggen">
             </form>
         </div>
     </div>
