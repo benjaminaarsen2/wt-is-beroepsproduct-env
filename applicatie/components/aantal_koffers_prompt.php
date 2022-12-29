@@ -26,7 +26,7 @@
             <h3>Hoeveel koffers wilt u inchecken?</h3>
             <form method="post" class="inchecken" action= <?= $_SERVER["REQUEST_URI"] ?> >
                 <label for="aantal_koffers">Aantal koffers:</label>
-                <input type="number" name="aantal_koffers" id="aantal_koffers" min=1>
+                <input type="number" name="aantal_koffers" id="aantal_koffers" min=1 required>
 
                 <input class="knop" type="submit" value="Doorgaan">
             </form>

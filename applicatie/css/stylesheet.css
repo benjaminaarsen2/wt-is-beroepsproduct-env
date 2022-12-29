@@ -144,7 +144,7 @@
         background: var(--primary-color);
         color: whitesmoke;
         border-radius: 1em;
-        box-shadow: 0 6px var(--accent-color-1);
+        box-shadow: 0 4px var(--accent-color-1);
         font-size: 20px;
         text-align: center;
         text-decoration: none;
@@ -152,7 +152,7 @@
 
     .knop:hover {
         transform: translateY(1px);
-        box-shadow: 0 5px var(--accent-color-1);
+        box-shadow: 0 3px var(--accent-color-1);
         transition-duration: .2s;
         /* background: var(--secondary-color); */
         cursor: pointer;
