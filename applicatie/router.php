@@ -39,8 +39,8 @@ if (php_sapi_name() == 'cli-server') {
             include $pages[basename($path, ".php")];    
             exit();
         }
-        else if ($path === "/phpinfo.php") {
-            include "./phpinfo.php";
+        else if ($path === "/phpinfo.php" || $path = "/install_medewerker.php") {
+            include ".". $path;
             exit();
         }
         //de pagina bestaat niet

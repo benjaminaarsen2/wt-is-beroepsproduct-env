@@ -32,7 +32,7 @@
                 </div>
                 <div class="knoppen">
                     <a href="./passagierpaneel" class="knop">Passagier</a>
-                    <a href="./inloggen.html" class="knop">Medewerker</a>
+                    <a href="./medewerkerpaneel" class="knop">Medewerker</a>
                 </div>
             </div>
         </main>
