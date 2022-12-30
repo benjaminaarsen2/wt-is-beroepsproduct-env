@@ -1,11 +1,19 @@
 <?php
     session_start();
+    require_once "./db/db_medewerker.php";
+    if (isset($_POST["gebruikersnaam"]) && isset($_POST["wachtwoord"])) {
+        if (!checkMedewerkerLogin($_POST["gebruikersnaam"], $_POST["wachtwoord"])) {
+            $_SESSION["error_reason"] = "Uw gebruikersnaam of wachtwoord was fout.";
+            header("Location: /ongeldig");
+            exit();
+        };
+        $_SESSION["isMedewerker"] = true;
+    }
 
     if (!isset($_SESSION["isMedewerker"])) {
         header("Location: ". "./medewerker_login");
         exit();
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -33,7 +41,7 @@
     </header>
     <div class="hero">
         <div class="hero-content">
-            <a href="./vluchtgegevens_ophalen_medewerker.html" class="knop">Vluchtgegevens ophalen</a>
+            <a href="./vluchtgegevens_ophalen" class="knop">Vluchtgegevens ophalen</a>
             <a href="./passagier_inchecken.html" class="knop">Passagier inchecken</a>
             <a href="./passagier_toevoegen.html" class="knop">Passagier toevoegen</a>
             <a href="./vlucht_toevoegen.html" class="knop">Vlucht toevoegen</a>
