@@ -39,7 +39,7 @@ if (php_sapi_name() == 'cli-server') {
             include $pages[basename($path, ".php")];    
             exit();
         }
-        else if ($path === "/phpinfo.php" || $path = "/install_medewerker.php") {
+        else if ($path === "/phpinfo.php" || $path === "/install_medewerker.php") {
             include ".". $path;
             exit();
         }
