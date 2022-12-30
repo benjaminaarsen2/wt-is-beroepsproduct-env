@@ -20,7 +20,7 @@ if (php_sapi_name() == 'cli-server') {
     }
     // img map
     if (substr($path, 1, 3) === "img") {
-        header('Cache-Control: max-age='. 60*60);
+        header('Cache-Control: max-age='. 60*60*24*365);
         header('Content-Type: image/jpeg');
         readfile(".". $path);
         exit();

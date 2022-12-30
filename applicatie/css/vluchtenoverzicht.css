@@ -80,6 +80,7 @@
         grid-template-columns: auto auto auto;
         grid-gap: 2em;
         justify-content: left;
+        /* width: 100%; */
     }
     .label {
         color: black;
@@ -95,7 +96,6 @@
         box-shadow: 0px 0px 10px black;
         transition-duration: 250ms;
         text-decoration: none;
-        width: calc(100% - 3em);
     }
     .vlucht img {
         margin-top: 1em;
