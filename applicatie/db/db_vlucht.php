@@ -12,16 +12,22 @@
     function haalVluchtDetailOp($vluchtnummer) {
         global $db;
         $query = $db->prepare(
-            "select 'Gelre airport' as vertrekpunt, l.naam as bestemming, max_gewicht_pp as max_gewicht, max_aantal as aantal_plaatsen, (max_aantal - vp.vrije_plaatsen) as vrije_plaatsen,
+            "SELECT 'Gelre airport' as vertrekpunt, l.naam as bestemming, max_gewicht_pp as max_gewicht, max_aantal as aantal_plaatsen, (max_aantal - vp.vrije_plaatsen) as vrije_plaatsen,
             m.naam as vliegmaatschappij, v.vluchtnummer, m.maatschappijcode from Vlucht v
             inner join Luchthaven l on v.bestemming = l.luchthavencode
             inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
             inner join (select p.vluchtnummer as vluchtnummer, count(*) as vrije_plaatsen from Passagier p right join Vlucht v on p.vluchtnummer = v.vluchtnummer group by p.vluchtnummer) as vp
             on vp.vluchtnummer = v.vluchtnummer
-            where v.vluchtnummer = (?)"
+            where v.vluchtnummer = (?)" . (session_status() !== PHP_SESSION_NONE ? (isset($_SESSION["passagiernummer"]) ? " AND v.vertrektijd > GETDATE()" : "") : "")
         );
         $query->execute([$vluchtnummer]);
-        $res = $query->fetchAll()[0];
+        
+        $res = $query->fetchAll();
+        if (count($res) !== 1) {
+            return false;
+        }
+        $res = $res[0];
+
         return $res;
     }
 
