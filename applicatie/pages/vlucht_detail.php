@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     if(!isset($_POST["vluchtnummer"]) && !isset($_SESSION["vluchtnummer"]) && !isset($_GET["vluchtnummer"])) {
         $_SESSION["error_reason"] = "Er is geen vluchtnummer meegegeven";
         header("Location: ./ongeldig");
@@ -28,6 +29,16 @@
 
     require_once "./db/db_vlucht.php";
     $vlucht_details = haalVluchtDetailOp($vluchtnummer);
+
+    /* 
+    vlucht_details is false wanneer je als gebruiker een vlucht probeert te bekijken die in het verleden is
+    zie GB-02
+    */
+    if (!$vlucht_details) {
+        $_SESSION["error_reason"] = "U heeft niet de bevoegdheid om deze vlucht te bekijken";
+        header("Location: ./ongeldig");
+        exit();
+    }
 
     unset($_SESSION["vluchtnummer"]);
     $terugPagina = "./paneel_handler";

@@ -1,7 +1,8 @@
 <?php
     session_start();
     $reason = 'U heeft iets ongeldigs ingevoerd in een invoerveld';
-    $previous = $_SERVER["HTTP_REFERER"];
+    //als er geen referer is leiden we de gebruiker maar gewoon om naar de homepagina met de terugknop
+    $previous = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "/";
     if (isset($_SESSION["error_reason"])) {
         $reason = $_SESSION["error_reason"];
     }
@@ -9,7 +10,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
