@@ -36,7 +36,7 @@
             <form method="post" action= <?= $nextPage ?> >
                 <label for="passagiernummer">Passagiernummer:</label>
                 <br>
-                <input type="number" id="passagiernummer" name="passagiernummer" required>
+                <input type="number" id="passagiernummer" name="passagiernummer" required autofocus>
                 <br>
                 <input class="knop" type="submit" value="Inloggen">
             </form>

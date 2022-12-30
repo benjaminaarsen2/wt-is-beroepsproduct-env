@@ -35,7 +35,7 @@
             <form method="post" action= <?= $nextPage ?> >
                 <label for="gebruikersnaam">Gebruikersnaam:</label>
                 <br>
-                <input type="text" id="gebruikersnaam" name="gebruikersnaam" required>
+                <input type="text" id="gebruikersnaam" name="gebruikersnaam" required autofocus>
                 <br>
                 <br>
                 <label for="wachtwoord">Wachtwoord:</label>
