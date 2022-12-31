@@ -1,7 +1,8 @@
 .inchecken {
     display: grid;
     grid-template-columns: auto auto;
-    grid-column-gap: 2em;;
+    column-gap: 2em;
+    row-gap: .5em;
 }
 
 .knop {

@@ -36,7 +36,12 @@
             exit();
         }
 
-        if(!isset($_SESSION["passagiernummer"])) {
+        /* 
+        Als het passagiernummer session variabele nog niet bestaat deze erin zetten,
+        als de gebruiker een medewerker is moet dit niet want dan is hij volgens het systeem een medewerker
+        en passagier tegelijkertijd
+        */
+        if(!isset($_SESSION["passagiernummer"]) && !isset($_SESSION["isMedewerker"])) {
             $_SESSION["passagiernummer"] = $passagiernummer;
         }
         return $passagiernummer;

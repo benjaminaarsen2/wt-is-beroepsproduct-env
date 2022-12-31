@@ -32,7 +32,6 @@
     <div class="hero">
         <div class="hero-content">
             <h3>Vul hier alstublieft uw passagiernummer in</h3>
-            <!-- FIXME: but why?? -->
             <form method="post" action= <?= $nextPage ?> >
                 <label for="passagiernummer">Passagiernummer:</label>
                 <br>

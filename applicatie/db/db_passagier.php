@@ -45,5 +45,21 @@
         $query->execute([$passagiernummer]);
         $res = $query->fetchAll()[0];
         return $res["max_gewicht_pp"] - $res["passagier_gewicht"] - $koffers_gewicht;
-    }   
+    }
+
+    function passagierToevoegen($passagiernummer, $naam, $vluchtnummer, $geslacht, $balienummer, $stoel, $inchecktijdstip) {
+        global $db;
+        $query = $db->prepare(
+            "INSERT INTO Passagier (passagiernummer, naam, vluchtnummer, geslacht, balienummer, stoel, inchecktijdstip) VALUES (:passagiernummer, :naam, :vluchtnummer, :geslacht, :balienummer, :stoel, :inchecktijdstip)"
+        );
+        $query->bindParam(':passagiernummer', $passagiernummer);
+        $query->bindParam(':naam', $naam);
+        $query->bindParam(':vluchtnummer', $vluchtnummer);
+        $query->bindParam(':geslacht', $geslacht);
+        $query->bindParam(':balienummer', $balienummer);
+        $query->bindParam(':stoel', $stoel);
+        $query->bindParam(':inchecktijdstip', $inchecktijdstip);
+
+        $query->execute();
+    }
 ?>
