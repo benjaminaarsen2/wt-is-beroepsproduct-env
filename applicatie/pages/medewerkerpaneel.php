@@ -45,8 +45,8 @@
             <!-- TODO: checken of dit werkt -->
             <a href="./inchecken" class="knop">Passagier inchecken</a>
 
-            <a href="./passagiergegevens_invullen" class="knop">Passagier toevoegen</a>
-            <a href="./vlucht_toevoegen.html" class="knop">Vlucht toevoegen</a>
+            <a href="./passagier_toevoegen" class="knop">Passagier toevoegen</a>
+            <a href="./vlucht_toevoegen" class="knop">Vlucht toevoegen</a>
         </div>
     </div>
     <?php
