@@ -47,9 +47,13 @@
         return $res["max_gewicht_pp"] - $res["passagier_gewicht"] - $koffers_gewicht;
     }
 
-    function passagierToevoegen($passagiernummer, $naam, $vluchtnummer, $geslacht, $balienummer, $stoel, $inchecktijdstip) {
+    function passagierToevoegen($passagiernummer, $naam, $vluchtnummer, $geslacht, $balienummer, $stoel) {
         global $db;
+        // $passagiernummer = str_pad($passagiernummer, 5, '0', STR_PAD_LEFT);
+        $inchecktijdstip = date("y-m-d H:i:s");
+
         $query = $db->prepare(
+            "SET dateformat ymd;".
             "INSERT INTO Passagier (passagiernummer, naam, vluchtnummer, geslacht, balienummer, stoel, inchecktijdstip) VALUES (:passagiernummer, :naam, :vluchtnummer, :geslacht, :balienummer, :stoel, :inchecktijdstip)"
         );
         $query->bindParam(':passagiernummer', $passagiernummer);
@@ -59,7 +63,13 @@
         $query->bindParam(':balienummer', $balienummer);
         $query->bindParam(':stoel', $stoel);
         $query->bindParam(':inchecktijdstip', $inchecktijdstip);
-
-        $query->execute();
+        try {
+            $query->execute();
+        }
+        catch (PDOException $e) {
+            error_log($e);
+            return false;
+        }
+        return true;
     }
 ?>
