@@ -70,19 +70,19 @@
         <div class="hero-content">
             <div class="vluchtinfo">
                 <h3 class="label">Vertrekpunt:</h3>
-                <?= "<h3>". $vlucht_details["vertrekpunt"]. "</h3>" ?>
+                <?= "<h3>". htmlspecialchars($vlucht_details["vertrekpunt"]). "</h3>" ?>
                 <h3 class="label">Bestemming:</h3>
-                <?= "<h3>". $vlucht_details["bestemming"]. "</h3>" ?>
+                <?= "<h3>". htmlspecialchars($vlucht_details["bestemming"]). "</h3>" ?>
                 <h3 class="label">Max gewicht:</h3>
-                <?= "<h3>". $vlucht_details["max_gewicht"]. "</h3>" ?>
+                <?= "<h3>". htmlspecialchars($vlucht_details["max_gewicht"]). "</h3>" ?>
                 <h3 class="label">Aantal plaatsen:</h3>
-                <?= "<h3>". $vlucht_details["aantal_plaatsen"]. "</h3>" ?>
+                <?= "<h3>". htmlspecialchars($vlucht_details["aantal_plaatsen"]). "</h3>" ?>
                 <h3 class="label">Aantal vrije plaatsen:</h3>
-                <?= "<h3>". $vlucht_details["vrije_plaatsen"]. "</h3>" ?>
+                <?= "<h3>". htmlspecialchars($vlucht_details["vrije_plaatsen"]). "</h3>" ?>
                 <h3 class="label">Vliegmaatschappij:</h3>
-                <?= "<h3>". $vlucht_details["vliegmaatschappij"]. "</h3>" ?>
+                <?= "<h3>". htmlspecialchars($vlucht_details["vliegmaatschappij"]). "</h3>" ?>
                 <h3 class="label">Vluchtnummer:</h3>
-                <?= "<h3>". $vlucht_details["vluchtnummer"]. "</h3>" ?>
+                <?= "<h3>". htmlspecialchars($vlucht_details["vluchtnummer"]). "</h3>" ?>
                 <img alt="KLM Vliegtuig" src= <?= $imagefile ?> >
                 <a class="knop" href= <?=$terugPagina?> >Terug</a>
             </div>

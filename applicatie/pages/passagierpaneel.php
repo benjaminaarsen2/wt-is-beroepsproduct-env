@@ -31,7 +31,7 @@
         require_once "./components/navbar.php";
     ?>
     <header>
-        <?= "<h1>Ingelogd als: $passagier_naam</h1>"?>
+        <?= "<h1>Ingelogd als ". htmlspecialchars($passagier_naam). "</h1>"?>
     </header>
     <div class="hero">
         <div class="hero-content">

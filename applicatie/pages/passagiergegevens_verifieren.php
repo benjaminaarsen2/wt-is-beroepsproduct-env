@@ -5,7 +5,7 @@
         exit("<h1>Toegang geweigerd</h1>");
     }
     
-    if (!isset($_SERVER["HTTP_REFERER"]) || parse_url($_SERVER["HTTP_REFERER"])["path"] !== "/passagiergegevens_invullen") {
+    if (!isset($_SERVER["HTTP_REFERER"]) || parse_url($_SERVER["HTTP_REFERER"])["path"] !== "/passagier_toevoegen") {
         http_response_code(403);
         exit("<h1>Toegang geweigerd</h1>");
     }
