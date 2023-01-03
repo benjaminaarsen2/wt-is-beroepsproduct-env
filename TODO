@@ -5,6 +5,4 @@
     -   hiervoor eerst nieuwe "test" passagier maken en hiervoor moeten we eerst medewerker interacties
         werkend krijgen
 -   medewerker ter bevestiging nog de data van de passagier laten zien voordat deze bijgewerkt wordt
--   bescherming tegen XSS voor vluchtenoverizcht. anders zou een medewerker in principe een XSS aanval kunnen doen
 -   paginas opdelen in medewerker en passagier deel
--   vluchtgegevens verifieren
