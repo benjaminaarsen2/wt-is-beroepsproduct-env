@@ -21,12 +21,12 @@
     function koffersAantalToegestaan($passagiernummer, $aantal_koffers) {
         global $db;
         $query = $db->prepare(
-            "select p.passagiernummer, m.max_objecten_pp as max_koffers, count(*) as koffers_ingecheckt from Passagier p
-            inner join BagageObject b on p.passagiernummer = b.passagiernummer
+            "select p.passagiernummer, m.max_objecten_pp as max_koffers, IIF(b.passagiernummer is not null, count(b.passagiernummer), 0) from Passagier p
+            left join BagageObject b on p.passagiernummer = b.passagiernummer
             inner join Vlucht v on p.vluchtnummer = v.vluchtnummer
             inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
             where p.passagiernummer = (?)
-            group by p.passagiernummer, m.max_objecten_pp"
+            group by p.passagiernummer, m.max_objecten_pp, b.passagiernummer"
         );
         $query->execute([$passagiernummer]);
         $res = $query->fetchAll()[0];
