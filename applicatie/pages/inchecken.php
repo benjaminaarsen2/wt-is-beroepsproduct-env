@@ -11,7 +11,6 @@
     require_once "./util/check_for_passagiernummer.php";
     require_once "./db/db_passagier.php";
 
-
     $passagiernummer = checkAndSetPassagiernummer($_SERVER["REQUEST_URI"]); //na inloggen omleiden naar deze pagina.
     
     // if (!isset($_POST["aantal_koffers"])) {
@@ -123,6 +122,7 @@
             //session variabelen opschonen
             unset($_SESSION["inchecken_state"]);
             unset($_SESSION["aantal_koffers"]);
+            unset($_SESSION["passagiernummer_medewerker"]);
             header("Location: ./success");
             break;
     }

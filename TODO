@@ -6,3 +6,4 @@
         werkend krijgen
 -   medewerker ter bevestiging nog de data van de passagier laten zien voordat deze bijgewerkt wordt
 -   paginas opdelen in medewerker en passagier deel
+-   fix dat je niet je eigen vluchtgegevens kan zien als deze al geweest is, (of is dit juist goed?)

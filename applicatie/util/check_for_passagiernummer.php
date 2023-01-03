@@ -8,6 +8,9 @@
         if (isset($_SESSION["passagiernummer"])) {
             $passagiernummer = $_SESSION["passagiernummer"];
         }
+        else if (isset($_SESSION["passagiernummer_medewerker"])) {
+            $passagiernummer = $_SESSION["passagiernummer_medewerker"];
+        }
         //als deze er niet is zorgen we dat we geredirect worden als er in post ook geen passagiernummer is
         else if (!isset($_POST["passagiernummer"])) {
             $_SESSION["nextPage"] = $nextPage;
@@ -41,7 +44,10 @@
         als de gebruiker een medewerker is moet dit niet want dan is hij volgens het systeem een medewerker
         en passagier tegelijkertijd
         */
-        if(!isset($_SESSION["passagiernummer"]) && !isset($_SESSION["isMedewerker"])) {
+        if(!isset($_SESSION["passagiernummer_medewerker"]) && isset($_SESSION["isMedewerker"])) {
+            $_SESSION["passagiernummer_medewerker"] = $passagiernummer;
+        }
+        else if(!isset($_SESSION["passagiernummer"]) && !isset($_SESSION["isMedewerker"])) {
             $_SESSION["passagiernummer"] = $passagiernummer;
         }
         return $passagiernummer;
