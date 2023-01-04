@@ -46,7 +46,7 @@
     </header>
     <div class="filterbar">
         <form class="filters" action="./vluchtenoverzicht" method="post" id="filters">
-            <h2>Fitlers</h2>
+            <h2>Filters</h2>
             <div class="filter">
                 <label for="maatschappij">Maatschappij:</label>
                 <select name="maatschappij" id="maatschappij" form="filters">
