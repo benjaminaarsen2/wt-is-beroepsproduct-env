@@ -35,7 +35,7 @@
         }
 
         $_SESSION["success_reason"] = "U heeft succesvol een passagier aan het systeem toegevoegd";
-        $_SESSION["nextPage"] = "/paneelhandler";
+        $_SESSION["nextPage"] = "/paneel_handler";
         header("Location: /success");
         exit();
     }
