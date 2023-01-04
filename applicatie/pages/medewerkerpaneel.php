@@ -46,7 +46,6 @@
     <div class="hero">
         <div class="hero-content">
             <a href="./vluchtgegevens_ophalen" class="knop">Vluchtgegevens ophalen</a>
-            <!-- TODO: checken of dit werkt -->
             <a href="./inchecken" class="knop">Passagier inchecken</a>
 
             <a href="./passagier_toevoegen" class="knop">Passagier toevoegen</a>

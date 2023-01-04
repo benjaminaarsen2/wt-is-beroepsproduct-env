@@ -1,12 +1,4 @@
 <?php
-
-    /*
-    TODO: eerst een prompt met hoeveel koffers echoen, dit opslaan als session variabele en de pagina reloaden. 
-    op basis van de hoeveelheid koffers in session het juiste aantal invoervelden echoen. Ook checken hoeveel koffers
-    de passagier uberhaupt nog mag inchecken en een foutmelding geven als dit het maximum overshcrijdt qua 
-    gewicht op de vlucht of aantal bagageobjecten per passagier
-    */
-
     session_start();
     require_once "./util/check_for_passagiernummer.php";
     require_once "./db/db_passagier.php";
@@ -122,7 +114,6 @@
                 header("Location: ./ongeldig");
                 exit();
             }
-            //TODO: koffers uploaden naar database
             $res = bagageToevoegen($passagiernummer, intval($_SESSION["aantal_koffers"]), array_values($_POST));
             if (!$res) {
                 echo "Error";

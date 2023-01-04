@@ -32,7 +32,6 @@ if (php_sapi_name() == 'cli-server') {
         exit('<h1>Toegang geweigerd</h1>');
     }
 
-    //TODO: redirect naar pagina zonder .php extensie
     if (substr($path, -4, 4) === ".php") {
         if (in_array(basename($path, ".php"), array_keys($pages))) {
             // header("Location: " . basename($path, ".php"));

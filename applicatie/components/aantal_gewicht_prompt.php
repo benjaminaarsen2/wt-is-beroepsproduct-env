@@ -25,7 +25,6 @@
         <div class="hero-content">
             <form method="post" class="inchecken" action= <?= $_SERVER["REQUEST_URI"] ?> >
                 <?php
-                    //TODO: check of het wel een int is en of het niet limieten overschrijdt
                     for($i = 0; $i < intval($_SESSION["aantal_koffers"]); $i++) {
                         echo "<label for='gewicht-". $i . "'>Gewicht koffer ". $i+1 . "</label>";
                         echo "<input type='number' name='gewicht-". $i . "' id='gewicht-" . $i ."'>";
