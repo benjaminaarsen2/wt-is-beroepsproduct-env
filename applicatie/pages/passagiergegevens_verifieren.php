@@ -10,6 +10,7 @@
         exit("<h1>Toegang geweigerd</h1>");
     }
     require_once "./db/db_passagier.php";
+    require_once "./db/db_vlucht.php";
 
     $passagiernummer = isset($_POST["passagiernummer"]) ? $_POST["passagiernummer"] : false;
     $naam            = isset($_POST["naam"]) ? $_POST["naam"] : false;
@@ -19,6 +20,11 @@
     $stoel           = isset($_POST["stoel"]) ? $_POST["stoel"] : false;
     // $inchecktijdstip = isset($_POST["inchecktijdstip"]) ? $_POST["inchecktijdstip"] : false;
 
+    if (haalVrijePlaatsenOp($vluchtnummer) === 0) {
+        $_SESSION["error_reason"] = "Er zijn niet genoeg plaatsen meer over op de vlucht.";
+        header("Location: /ongeldig");
+        exit();
+    }
     if ($passagiernummer && $naam && $vluchtnummer && $geslacht && $balienummer && $stoel) {
         $res = passagierToevoegen($passagiernummer, $naam, $vluchtnummer, $geslacht, $balienummer, $stoel);
 

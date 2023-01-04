@@ -8,6 +8,18 @@
     //     $query->execute([$vluchtnummer]);
     //     $res = $query->fetchAll()[0]["vluchtnummer"]
     // }
+    
+    function haalVrijePlaatsenOp($vluchtnummer) {
+        global $db;
+        $query = $db->prepare(
+            "SELECT p.vluchtnummer, (v.max_aantal - count(*)) as vrije_plaatsen from Passagier p 
+            inner join Vlucht v on v.vluchtnummer = (?)
+            group by p.vluchtnummer, v.max_aantal"
+            );
+        $query->execute([$vluchtnummer]);
+        $res = $query->fetchAll()[0]["vrije_plaatsen"];
+        return $res;
+    }
 
     function haalVluchtDetailOp($vluchtnummer) {
         global $db;
