@@ -44,12 +44,18 @@
         als de gebruiker een medewerker is moet dit niet want dan is hij volgens het systeem een medewerker
         en passagier tegelijkertijd
         */
-        if(!isset($_SESSION["passagiernummer_medewerker"]) && isset($_SESSION["isMedewerker"])) {
+        if(!isset($_SESSION["passagiernummer"]) && isset($_SESSION["isMedewerker"]) && $nextPage === "./passagierpaneel") {
+            unset($_SESSION["isMedewerker"]);
+            $_SESSION["passagiernummer"] = $passagiernummer;
+        }
+        else if(!isset($_SESSION["passagiernummer_medewerker"]) && isset($_SESSION["isMedewerker"])) {
             $_SESSION["passagiernummer_medewerker"] = $passagiernummer;
         }
         else if(!isset($_SESSION["passagiernummer"]) && !isset($_SESSION["isMedewerker"])) {
             $_SESSION["passagiernummer"] = $passagiernummer;
         }
+        //alleen als we naar passagierpaneel willen
+        
         return $passagiernummer;
     }
 ?>

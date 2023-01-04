@@ -14,6 +14,10 @@
         header("Location: ". "./medewerker_login");
         exit();
     }
+    // Als we passagier waren eerst "uitloggen"
+    if (isset($_SESSION["passagiernummer"])) {
+        unset($_SESSION["passagiernummer"]);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="nl">

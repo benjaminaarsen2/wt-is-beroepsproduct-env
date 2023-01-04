@@ -1,6 +1,6 @@
 <?php
     $ingelogd = false;
-    if(session_status() !== PHP_SESSION_NONE && isset($_SESSION["passagiernummer"]) || isset($_SESSION["isMedewerker"])) {
+    if(session_status() !== PHP_SESSION_NONE && (isset($_SESSION["passagiernummer"]) || isset($_SESSION["isMedewerker"]))) {
         $ingelogd = true;
     }
 

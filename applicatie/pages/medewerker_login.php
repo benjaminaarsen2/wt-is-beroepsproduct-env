@@ -1,6 +1,7 @@
 <?php
     session_start();
     $nextPage = "./medewerkerpaneel";
+   
     if (isset($_SESSION["nextPage"])) {
         $nextPage = $_SESSION["nextPage"];
     }
