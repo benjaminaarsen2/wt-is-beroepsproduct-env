@@ -18,16 +18,16 @@
             inner join Maatschappij m on v.maatschappijcode = m.maatschappijcode
             left join (select p.vluchtnummer as vluchtnummer, count(*) as vrije_plaatsen from Passagier p right join Vlucht v on p.vluchtnummer = v.vluchtnummer group by p.vluchtnummer) as vp
             on vp.vluchtnummer = v.vluchtnummer
-            where v.vluchtnummer = (?)" . (session_status() !== PHP_SESSION_NONE ? (isset($_SESSION["passagiernummer"]) ? " AND v.vertrektijd > GETDATE()" : "") : "")
+            where v.vluchtnummer = (?)" . (session_status() !== PHP_SESSION_NONE ? ((isset($_SESSION["passagiernummer"]) && !isset($_SESSION["mijnvlucht"])) ? " AND v.vertrektijd > GETDATE()" : "") : "")
         );
         $query->execute([$vluchtnummer]);
-        
+        unset($_SESSION["mijnvlucht"]);
         $res = $query->fetchAll();
         if (count($res) !== 1) {
             return false;
         }
         $res = $res[0];
-
+        
         return $res;
     }
 

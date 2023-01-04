@@ -10,6 +10,7 @@
     session_start();
     require_once "./util/check_for_passagiernummer.php";
     require_once "./db/db_passagier.php";
+    require_once "./db/db_bagage.php";
 
     $passagiernummer = checkAndSetPassagiernummer($_SERVER["REQUEST_URI"]); //na inloggen omleiden naar deze pagina.
     
@@ -101,6 +102,13 @@
         case "aantal_gewicht_checken":
             $gewicht = 0;
             foreach($_POST as $k => $v) {
+                if(strpos($k, "gewicht-") === false) {
+                    // er is geklooid met post request
+                    echo strpos($k, "gewicht-"). "\n";
+                    echo $k . "\n";
+                    echo "<h1>Fout met post-request</h1>";
+                    exit();
+                }
                 $gewicht += $v;
             }
             $gewichttoegestaan = koffersGewichtToegestaan($passagiernummer, $gewicht);
@@ -115,6 +123,11 @@
                 exit();
             }
             //TODO: koffers uploaden naar database
+            $res = bagageToevoegen($passagiernummer, intval($_SESSION["aantal_koffers"]), array_values($_POST));
+            if (!$res) {
+                echo "Error";
+                exit();
+            }
             $_SESSION["nextPage"] = "./paneel_handler";
             //TODO: gebruiker nog een overzicht van gegevens geven zodat hij kan checken of alles juist is
             $_SESSION["success_reason"] = "Uw bagage is successvol ingecheckt.";

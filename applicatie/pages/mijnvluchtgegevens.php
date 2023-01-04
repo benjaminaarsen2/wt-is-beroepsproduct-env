@@ -9,5 +9,6 @@
     $vluchtnummer = haalMijnVluchtOp($passagiernummer);
 
     $_SESSION["vluchtnummer"] = $vluchtnummer;
+    $_SESSION["mijnvlucht"] = true;
     header("Location: ./vlucht_detail");
 ?>
